@@ -17,6 +17,7 @@ function term_tree_selector_theme($existing, $type, $theme, $path) {
         'root_label' => NULL,
         'leaf_label' => NULL,
         'leaf_level' => NULL,
+        'submit_label' => NULL,
       ),
     ),
   );

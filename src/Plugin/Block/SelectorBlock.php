@@ -53,6 +53,13 @@ class SelectorBlock extends BlockBase {
       '#default_value' => !empty($configuration['leaf_level']) ? $configuration['leaf_level'] : '',
     ];
 
+    $form['submit_label'] = [
+      '#type' => 'textfield',
+      '#title' => t('Submit Label'),
+      '#required' => TRUE,
+      '#default_value' => !empty($configuration['submit_label']) ? $configuration['submit_label'] : '',
+    ];
+
     return $form;
   }
 
@@ -64,6 +71,7 @@ class SelectorBlock extends BlockBase {
     $this->setConfigurationValue('root_label', $form_state->getValue('root_label'));
     $this->setConfigurationValue('leaf_label', $form_state->getValue('leaf_label'));
     $this->setConfigurationValue('leaf_level', $form_state->getValue('leaf_level'));
+    $this->setConfigurationValue('submit_label', $form_state->getValue('submit_label'));
   }
 
   /**
@@ -77,6 +85,7 @@ class SelectorBlock extends BlockBase {
       '#root_label' => $block_configuration['root_label'],
       '#leaf_label' => $block_configuration['leaf_label'],
       '#leaf_level' => $block_configuration['leaf_level'],
+      '#submit_label' => $block_configuration['submit_label'],
       '#attached' => [
         'library' => ['term_tree_selector/selector'],
       ]
