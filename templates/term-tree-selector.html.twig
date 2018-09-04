@@ -4,7 +4,9 @@
  * Term Tree Selector.
  */
 #}
-{{ description }}
+{% if description %}
+  <div class="description">{{ description }}</div>
+{% endif %}
 <form class="term-tree-selector" data-vocabulary="{{ vocabulary }}" data-level="{{ leaf_level }}">
     <select name="root">
         <option>Select {{ root_label }}</option>

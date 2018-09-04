@@ -56,7 +56,7 @@ class SelectorBlock extends BlockBase {
     $form['description'] = [
       '#type' => 'textfield',
       '#title' => t('Description'),
-      '#required' => TRUE,
+      '#required' => FALSE,
       '#default_value' => !empty($configuration['description']) ? $configuration['description'] : '',
     ];
 
