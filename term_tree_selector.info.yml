@@ -1,0 +1,5 @@
+name: 'Term Tree Selector'
+type: module
+description: 'Provides blocks with root/leaf selector for terms'
+package: 'Content'
+core: 8.x
