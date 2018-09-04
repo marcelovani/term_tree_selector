@@ -1,6 +1,8 @@
 # Term Tree Selector
 
-Provides root/leaf selector blocks for term trees with 2 or 3 levels
+Provides configurable root/leaf selector blocks for term trees with 2 or 3 levels.
+
+Terms will only show in the selector if they are published and have content.
 
 ## Installation
 
@@ -9,18 +11,18 @@ with the following configuration:
 
 **Vocabulary:** The hierarchical vocabulary to use
 
-**Root Label:** The label of the root terms, e.g. "Make", used to
-display "Select Make" in the select box.
+**Root Label:** The label for the root terms, e.g. "Make", used to
+display "Select Make" in the root select box.
 
-**Leaf Label:** The label of the leaf terms, e.g. "Model", used to
-display "Select Model" in the select box.
+**Leaf Label:** The label for the leaf terms, e.g. "Model", used to
+display "Select Model" in the leaf select box.
 
 **Leaf Level:** The number levels to traverse to populate the leaf
 select box (Second or Third)
 
 **Submit Label:** The text shown on the submit button
 
-**Description (optional):** Text that will be display above the form
+**Description (optional):** Text that will be displayed above the form
 
 ## REST Endpoints
 The following REST Export endpoints are provided by the
