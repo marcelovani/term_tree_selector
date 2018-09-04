@@ -18,24 +18,29 @@
         var level = forms[i].dataset.level;
 
         this.populateRootOptions(root_select, vocabulary, level);
-        this.initSubmit(submit_button, root_select);
+        this.initSubmit(submit_button, root_select, leaf_select);
         this.initRootOnChange(root_select, leaf_select, vocabulary, level);
         this.initLeafOnChange(leaf_select);
       }
     },
 
     /**
-     * Populate root options.
+     * Go to root/leaf page when clicking the submit button.
      *
      * @param submit_button
      * @param root_select
+     * @param leaf_select
      */
-    initSubmit: function(submit_button, root_select) {
+    initSubmit: function(submit_button, root_select, leaf_select) {
       submit_button.onclick = function(e) {
         e.preventDefault();
-        var url = root_select.options[root_select.selectedIndex].dataset.url;
-        if (url) {
-          window.location = url;
+        var selects = [leaf_select, root_select];
+        for (var i = 0; i < selects.length; i++) {
+          var url = selects[i].options[selects[i].selectedIndex].dataset.url;
+          if (url) {
+            window.location = url;
+            break;
+          }
         }
       }
     },
