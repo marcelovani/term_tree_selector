@@ -3,7 +3,10 @@
 namespace Drupal\term_tree_selector\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a Term Tree Selector block.
@@ -13,7 +16,41 @@ use Drupal\Core\Form\FormStateInterface;
  *   admin_label = @Translation("Term Tree Selector"),
  * )
  */
-class SelectorBlock extends BlockBase {
+class SelectorBlock extends BlockBase implements ContainerFactoryPluginInterface {
+  /**
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * Constructor for SelectorBlock class.
+   *
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin_id for the plugin instance.
+   * @param string $plugin_definition
+   *   The plugin implementation definition.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager) {
+    $this->entityTypeManager = $entity_type_manager;
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager')
+    );
+  }
+
   /**
    * {@inheritdoc}
    */
@@ -21,10 +58,17 @@ class SelectorBlock extends BlockBase {
     $form = parent::blockForm($form, $form_state);
     $configuration = $this->getConfiguration();
 
+    // Build array of vocabulary options.
+    $vocabularies = $this->entityTypeManager->getStorage('taxonomy_vocabulary')->loadMultiple();
+    $vocabulary_options = ['' => '- Select -'];
+    foreach ($vocabularies as $vocabulary) {
+      $vocabulary_options[$vocabulary->id()] = $vocabulary->label();
+    }
     $form['vocabulary'] = [
-      '#type' => 'textfield',
+      '#type' => 'select',
       '#title' => t('Vocabulary'),
       '#required' => TRUE,
+      '#options' => $vocabulary_options,
       '#default_value' => !empty($configuration['vocabulary']) ? $configuration['vocabulary'] : '',
     ];
 
