@@ -33,7 +33,10 @@
     initSubmit: function(submit_button, root_select) {
       submit_button.onclick = function(e) {
         e.preventDefault();
-        window.location = root_select.options[root_select.selectedIndex].dataset.url;
+        var url = root_select.options[root_select.selectedIndex].dataset.url;
+        if (url) {
+          window.location = url;
+        }
       }
     },
 
@@ -89,13 +92,14 @@
      * @param level
      */
     populateLeafOptions: function(leaf_select, vocabulary, tid, level) {
+      // Remove current child elements.
+      leaf_select.querySelectorAll('option[value]').forEach(function(el){
+        leaf_select.removeChild(el);
+      });
+
       var url = this.baseUrl +  encodeURIComponent(vocabulary) + '/' + encodeURIComponent(tid) + '/level/' + encodeURIComponent(level);
       selectors.getJSON(url, function(data){
         for (var x = 0; x < data.length; x++) {
-          // Remove current child elements.
-          leaf_select.querySelectorAll('option[value]').forEach(function(el){
-            leaf_select.removeChild(el);
-          });
           // Add new elements.
           for (var x = 0; x < data.length; x++) {
             leaf_select.appendChild(selectors.optionElement(data[x]));
