@@ -28,8 +28,10 @@ select box (Second or Third)
 The following REST Export endpoints are provided by the
 "Term Tree Selector" view.
 
-### Root terms [/term-tree-selector/{vocabulary}/level/{level}]
-
+### Root terms
+```
+/term-tree-selector/{vocabulary}/level/{level}
+```
 Returns the root level terms for provided vocabulary and level.
 
 + Parameters
@@ -48,14 +50,18 @@ Returns the root level terms for provided vocabulary and level.
 
     + Body
 
-            {
-              "name": "Ford"
-              "tid": 123,
-              "url": "/ford"
-            }
+            [
+              {
+                "name": "Ford"
+                "tid": 123,
+                "url": "/ford"
+              }
+            ]
 
-### Leaf terms [/term-tree-selector/{vocabulary}/{tid}/level/{level}]
-
+### Leaf terms
+```
+/term-tree-selector/{vocabulary}/{tid}/level/{level}
+```
 Returns the root level terms for provided vocabulary and level.
 
 + Parameters
@@ -75,8 +81,10 @@ Returns the root level terms for provided vocabulary and level.
 
     + Body
 
-            {
-              "name": "Ford Focus"
-              "tid": 456,
-              "url": "/ford/focus"
-            }
+            [
+              {
+                "name": "Ford Focus"
+                "tid": 456,
+                "url": "/ford/focus"
+              }
+            ]
