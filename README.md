@@ -24,8 +24,8 @@ select box (Second or Third)
 
 **Description (optional):** Text that will be displayed above the form
 
-## REST Endpoints
-The following REST Export endpoints are provided by the
+## REST Endpoint
+The following REST Export endpoint is provided by the
 "Term Tree Selector" view.
 
 ### Root terms
@@ -36,13 +36,7 @@ Returns the root level terms for provided vocabulary and level.
 
 + Parameters
     + vocabulary (string) - Vocabulary machine name
-    + level (enum[number])
-
-         Number of levels in the term tree
-
-        + Members
-            + `2`
-            + `3`
+    + level (number) - Number of levels in the term tree (2 or 3)
 
 #### Retrieve Root Terms [GET]
 
@@ -60,20 +54,14 @@ Returns the root level terms for provided vocabulary and level.
 
 ### Leaf terms
 ```
-/term-tree-selector/{vocabulary}/{tid}/level/{level}
+/term-tree-selector/{vocabulary}/level/{level}/{tid}
 ```
-Returns the root level terms for provided vocabulary and level.
+Returns the leaf level terms for provided vocabulary, parent root ID and level.
 
 + Parameters
     + vocabulary (string) - Vocabulary machine name
+    + level (number) - Number of levels in the term tree (2 or 3)
     + tid (number) - Term ID of the root term
-    + level (enum[number])
-
-         Number of levels in the term tree
-
-        + Members
-            + `2`
-            + `3`
 
 #### Retrieve Leaf Terms [GET]
 

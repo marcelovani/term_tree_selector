@@ -390,7 +390,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
-      path: term-tree-selector/%/%/level/2
+      path: term-tree-selector/%/level/2/%
       arguments:
         vid:
           id: vid
@@ -715,7 +715,7 @@ display:
     display_options:
       display_extenders: {  }
       display_description: ''
-      path: term-tree-selector/%/%/level/3
+      path: term-tree-selector/%/level/3/%
       arguments:
         vid:
           id: vid

@@ -102,7 +102,7 @@
         leaf_select.removeChild(el);
       });
 
-      var url = this.baseUrl +  encodeURIComponent(vocabulary) + '/' + encodeURIComponent(tid) + '/level/' + encodeURIComponent(level);
+      var url = this.baseUrl +  encodeURIComponent(vocabulary)  + '/level/' + encodeURIComponent(level) + '/' + encodeURIComponent(tid);
       selectors.getJSON(url, function(data){
         for (var x = 0; x < data.length; x++) {
           // Add new elements.
