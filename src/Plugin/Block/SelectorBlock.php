@@ -18,6 +18,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class SelectorBlock extends BlockBase implements ContainerFactoryPluginInterface {
   /**
+   * The EntityTypeManager.
+   *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
@@ -141,7 +143,7 @@ class SelectorBlock extends BlockBase implements ContainerFactoryPluginInterface
       '#submit_label' => $block_configuration['submit_label'],
       '#attached' => [
         'library' => ['term_tree_selector/selector'],
-      ]
+      ],
     ];
   }
 
