@@ -7,7 +7,7 @@
 {% if description %}
   <div class="description">{{ description }}</div>
 {% endif %}
-<form class="term-tree-selector" data-vocabulary="{{ vocabulary }}" data-level="{{ leaf_level }}">
+<form class="term-tree-selector" data-vocabulary="{{ vocabulary }}" data-level="{{ leaf_level }}" data-autosubmit="{{ autosubmit }}">
     <select name="root">
         <option>Select {{ root_label }}</option>
     </select>

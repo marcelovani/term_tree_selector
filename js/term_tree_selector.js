@@ -16,11 +16,12 @@
         var submit_button = forms[i].querySelector('[name=submit]');
         var vocabulary = forms[i].dataset.vocabulary;
         var level = forms[i].dataset.level;
+        var autosubmit = forms[i].dataset.autosubmit;
 
         this.populateRootOptions(root_select, vocabulary, level);
         this.initSubmit(submit_button, root_select, leaf_select);
         this.initRootOnChange(root_select, leaf_select, vocabulary, level);
-        this.initLeafOnChange(leaf_select);
+        this.initLeafOnChange(leaf_select, autosubmit);
       }
     },
 
@@ -80,11 +81,14 @@
      * Initialise the leaf onchange event.
      *
      * @param leaf_select
+     * @param autosubmit
      */
-    initLeafOnChange: function(leaf_select) {
+    initLeafOnChange: function(leaf_select, autosubmit) {
       // Go to leaf URL when chosen.
-      leaf_select.onchange = function(e) {
-        window.location =  e.target.options[e.target.selectedIndex].dataset.url;
+      if (autosubmit == 1) {
+        leaf_select.onchange = function (e) {
+          window.location = e.target.options[e.target.selectedIndex].dataset.url;
+        }
       }
     },
 

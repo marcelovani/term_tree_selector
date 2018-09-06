@@ -113,6 +113,13 @@ class SelectorBlock extends BlockBase implements ContainerFactoryPluginInterface
       '#default_value' => !empty($configuration['submit_label']) ? $configuration['submit_label'] : '',
     ];
 
+    $form['autosubmit'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Auto Submit'),
+      '#required' => FALSE,
+      '#default_value' => !empty($configuration['autosubmit']) ? $configuration['autosubmit'] : '',
+    ];
+
     return $form;
   }
 
@@ -126,6 +133,7 @@ class SelectorBlock extends BlockBase implements ContainerFactoryPluginInterface
     $this->setConfigurationValue('leaf_level', $form_state->getValue('leaf_level'));
     $this->setConfigurationValue('description', $form_state->getValue('description'));
     $this->setConfigurationValue('submit_label', $form_state->getValue('submit_label'));
+    $this->setConfigurationValue('autosubmit', $form_state->getValue('autosubmit'));
   }
 
   /**
@@ -141,6 +149,7 @@ class SelectorBlock extends BlockBase implements ContainerFactoryPluginInterface
       '#leaf_level' => $block_configuration['leaf_level'],
       '#description' => $block_configuration['description'],
       '#submit_label' => $block_configuration['submit_label'],
+      '#autosubmit' => $block_configuration['autosubmit'],
       '#attached' => [
         'library' => ['term_tree_selector/selector'],
       ],

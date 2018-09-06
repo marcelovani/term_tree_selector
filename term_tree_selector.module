@@ -18,6 +18,7 @@ function term_tree_selector_theme($existing, $type, $theme, $path) {
         'leaf_level' => NULL,
         'description' => NULL,
         'submit_label' => NULL,
+        'autosubmit' => NULL,
       ],
     ],
   ];
