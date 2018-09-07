@@ -2,11 +2,11 @@ langcode: en
 status: true
 dependencies:
   module:
-    - node
-    - rest
-    - serialization
-    - taxonomy
-    - user
+  - node
+  - rest
+  - serialization
+  - taxonomy
+  - user
 id: term_tree_selector
 label: 'Term Tree Selector'
 module: views
@@ -389,12 +389,12 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
-        - url.query_args
-        - user.permissions
+      - 'languages:language_content'
+      - 'languages:language_interface'
+      - request_format
+      - url
+      - url.query_args
+      - user.permissions
       tags: {  }
   level_2:
     display_plugin: rest_export
@@ -484,6 +484,7 @@ display:
         arguments: false
         fields: false
         relationships: false
+        group_by: false
       pager:
         type: none
         options:
@@ -712,14 +713,15 @@ display:
           admin_label: node
           required: true
           plugin_id: standard
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
-        - user.permissions
+      - 'languages:language_content'
+      - 'languages:language_interface'
+      - request_format
+      - url
+      - user.permissions
       tags: {  }
   level_3:
     display_plugin: rest_export
@@ -808,6 +810,7 @@ display:
       defaults:
         arguments: false
         fields: false
+        group_by: false
       pager:
         type: none
         options:
@@ -1017,14 +1020,15 @@ display:
           absolute: false
           entity_type: taxonomy_term
           plugin_id: entity_link
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
-        - user.permissions
+      - 'languages:language_content'
+      - 'languages:language_interface'
+      - request_format
+      - url
+      - user.permissions
       tags: {  }
   root_level_2:
     display_plugin: rest_export
@@ -1064,6 +1068,7 @@ display:
         filter_groups: false
         fields: false
         relationships: false
+        sorts: false
       filters:
         status:
           id: status
@@ -1354,14 +1359,29 @@ display:
           admin_label: node
           required: true
           plugin_id: standard
+      sorts:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: parent_1
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
-        - user.permissions
+      - 'languages:language_content'
+      - 'languages:language_interface'
+      - request_format
+      - url
+      - user.permissions
       tags: {  }
   root_level_3:
     display_plugin: rest_export
@@ -1400,6 +1420,7 @@ display:
         filters: false
         filter_groups: false
         fields: false
+        sorts: false
       filters:
         status:
           id: status
@@ -1671,12 +1692,27 @@ display:
           absolute: false
           entity_type: taxonomy_term
           plugin_id: entity_link
+      sorts:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: parent_1
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
-        - user.permissions
+      - 'languages:language_content'
+      - 'languages:language_interface'
+      - request_format
+      - url
+      - user.permissions
       tags: {  }
