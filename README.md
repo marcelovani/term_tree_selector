@@ -20,9 +20,12 @@ display "Select Model" in the leaf select box.
 **Leaf Level:** The number levels to traverse to populate the leaf
 select box (Second or Third)
 
+**Description (optional):** Text that will be displayed above the form
+
 **Submit Label:** The text shown on the submit button
 
-**Description (optional):** Text that will be displayed above the form
+**Auto Submit:** If checked the form will automatically be submitted 
+once a leaf has been selected
 
 ## REST Endpoint
 The following REST Export endpoint is provided by the
