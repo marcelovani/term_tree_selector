@@ -95,6 +95,7 @@ class SelectorBlock extends BlockBase implements ContainerFactoryPluginInterface
       '#options' => [
         '2' => 'Second',
         '3' => 'Third',
+        'all' => 'All',
       ],
       '#default_value' => !empty($configuration['leaf_level']) ? $configuration['leaf_level'] : '',
     ];

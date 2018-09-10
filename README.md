@@ -17,8 +17,8 @@ display "Select Make" in the root select box.
 **Leaf Label:** The label for the leaf terms, e.g. "Model", used to
 display "Select Model" in the leaf select box.
 
-**Leaf Level:** The number levels to traverse to populate the leaf
-select box (Second or Third)
+**Leaf Level:** The number levels to traverse to populate the leaf select
+box (Second, Third or All). "All" will show the second and third levels.
 
 **Description (optional):** Text that will be displayed above the form
 
@@ -39,7 +39,7 @@ Returns the root level terms for provided vocabulary and level.
 
 + Parameters
     + vocabulary (string) - Vocabulary machine name
-    + level (number) - Number of levels in the term tree (2 or 3)
+    + level (number) - Leaf level to show (`2`,`3`,`all`)
 
 #### Retrieve Root Terms [GET]
 
@@ -63,7 +63,7 @@ Returns the leaf level terms for provided vocabulary, parent root ID and level.
 
 + Parameters
     + vocabulary (string) - Vocabulary machine name
-    + level (number) - Number of levels in the term tree (2 or 3)
+    + level - Leaf level to show (`2`,`3`,`all`)
     + tid (number) - Term ID of the root term
 
 #### Retrieve Leaf Terms [GET]
