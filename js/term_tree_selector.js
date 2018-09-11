@@ -13,6 +13,7 @@
       for (var i = 0; i < forms.length; i++) {
         var root_select = forms[i].querySelector('[name=root]');
         var leaf_select = forms[i].querySelector('[name=leaf]');
+        leaf_select.disabled = true;
         var submit_button = forms[i].querySelector('[name=submit]');
         var vocabulary = forms[i].dataset.vocabulary;
         var level = forms[i].dataset.level;
@@ -43,7 +44,7 @@
             break;
           }
         }
-      }
+      };
     },
 
     /**
@@ -73,8 +74,9 @@
     initRootOnChange: function(root_select, leaf_select, vocabulary, level) {
       // Change leaf options when root item is changed.
       root_select.onchange = function(e) {
+        leaf_select.disabled = true;
         selectors.populateLeafOptions(leaf_select, vocabulary, e.target.value, level);
-      }
+      };
     },
 
     /**
@@ -85,10 +87,10 @@
      */
     initLeafOnChange: function(leaf_select, autosubmit) {
       // Go to leaf URL when chosen.
-      if (autosubmit == 1) {
+      if (autosubmit === '1') {
         leaf_select.onchange = function (e) {
           window.location = e.target.options[e.target.selectedIndex].dataset.url;
-        }
+        };
       }
     },
 
@@ -108,11 +110,10 @@
 
       var url = this.baseUrl +  encodeURIComponent(vocabulary)  + '/level/' + encodeURIComponent(level) + '/' + encodeURIComponent(tid);
       selectors.getJSON(url, function(data){
+        // Add new elements.
+        leaf_select.disabled = false;
         for (var x = 0; x < data.length; x++) {
-          // Add new elements.
-          for (var x = 0; x < data.length; x++) {
-            leaf_select.appendChild(selectors.optionElement(data[x]));
-          }
+          leaf_select.appendChild(selectors.optionElement(data[x]));
         }
       });
     },
