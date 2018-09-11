@@ -2,11 +2,11 @@ langcode: en
 status: true
 dependencies:
   module:
-  - node
-  - rest
-  - serialization
-  - taxonomy
-  - user
+    - node
+    - rest
+    - serialization
+    - taxonomy
+    - user
 id: term_tree_selector
 label: 'Term Tree Selector'
 module: views
@@ -299,6 +299,46 @@ display:
           entity_type: taxonomy_term
           entity_field: status
           plugin_id: boolean
+        status_1:
+          id: status_1
+          table: taxonomy_term_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
       sorts:
         name:
           id: name
@@ -320,8 +360,8 @@ display:
       relationships:
         parent:
           id: parent
-          table: taxonomy_term_hierarchy
-          field: parent
+          table: taxonomy_term__parent
+          field: parent_target_id
           relationship: none
           group_type: group
           admin_label: Branch
@@ -329,8 +369,8 @@ display:
           plugin_id: standard
         parent_1:
           id: parent_1
-          table: taxonomy_term_hierarchy
-          field: parent
+          table: taxonomy_term__parent
+          field: parent_target_id
           relationship: parent
           group_type: group
           admin_label: Root
@@ -389,12 +429,12 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-      - 'languages:language_content'
-      - 'languages:language_interface'
-      - request_format
-      - url
-      - url.query_args
-      - user.permissions
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
+        - url.query_args
+        - user.permissions
       tags: {  }
   level_2:
     display_plugin: rest_export
@@ -446,8 +486,8 @@ display:
           plugin_id: vocabulary_vid
         parent:
           id: parent
-          table: taxonomy_term_hierarchy
-          field: parent
+          table: taxonomy_term__parent
+          field: parent_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -697,8 +737,8 @@ display:
       relationships:
         parent_1:
           id: parent_1
-          table: taxonomy_term_hierarchy
-          field: parent
+          table: taxonomy_term__parent
+          field: parent_target_id
           relationship: none
           group_type: group
           admin_label: Root
@@ -714,14 +754,56 @@ display:
           required: true
           plugin_id: standard
       group_by: true
+      sorts: {  }
+      filters:
+        status:
+          id: status
+          table: taxonomy_term_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
     cache_metadata:
       max-age: -1
       contexts:
-      - 'languages:language_content'
-      - 'languages:language_interface'
-      - request_format
-      - url
-      - user.permissions
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
+        - user.permissions
       tags: {  }
   level_3:
     display_plugin: rest_export
@@ -773,8 +855,8 @@ display:
           plugin_id: vocabulary_vid
         parent:
           id: parent
-          table: taxonomy_term_hierarchy
-          field: parent
+          table: taxonomy_term__parent
+          field: parent_target_id
           relationship: parent
           group_type: group
           admin_label: ''
@@ -1021,14 +1103,56 @@ display:
           entity_type: taxonomy_term
           plugin_id: entity_link
       group_by: true
+      sorts: {  }
+      filters:
+        status:
+          id: status
+          table: taxonomy_term_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
     cache_metadata:
       max-age: -1
       contexts:
-      - 'languages:language_content'
-      - 'languages:language_interface'
-      - request_format
-      - url
-      - user.permissions
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
+        - user.permissions
       tags: {  }
   root_level_2:
     display_plugin: rest_export
@@ -1110,8 +1234,8 @@ display:
           plugin_id: boolean
         parent:
           id: parent
-          table: taxonomy_term_hierarchy
-          field: parent
+          table: taxonomy_term__parent
+          field: parent_target_id
           relationship: parent_1
           group_type: group
           admin_label: ''
@@ -1150,6 +1274,46 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: numeric
+        status_1:
+          id: status_1
+          table: taxonomy_term_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -1343,8 +1507,8 @@ display:
       relationships:
         parent_1:
           id: parent_1
-          table: taxonomy_term_hierarchy
-          field: parent
+          table: taxonomy_term__parent
+          field: parent_target_id
           relationship: none
           group_type: group
           admin_label: Root
@@ -1377,11 +1541,11 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-      - 'languages:language_content'
-      - 'languages:language_interface'
-      - request_format
-      - url
-      - user.permissions
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
+        - user.permissions
       tags: {  }
   root_level_3:
     display_plugin: rest_export
@@ -1462,8 +1626,8 @@ display:
           plugin_id: boolean
         parent:
           id: parent
-          table: taxonomy_term_hierarchy
-          field: parent
+          table: taxonomy_term__parent
+          field: parent_target_id
           relationship: parent_1
           group_type: group
           admin_label: ''
@@ -1502,6 +1666,46 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: numeric
+        status_1:
+          id: status_1
+          table: taxonomy_term_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: status
+          plugin_id: boolean
       filter_groups:
         operator: AND
         groups:
@@ -1710,9 +1914,9 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-      - 'languages:language_content'
-      - 'languages:language_interface'
-      - request_format
-      - url
-      - user.permissions
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
+        - user.permissions
       tags: {  }
