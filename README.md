@@ -39,7 +39,7 @@ Returns the root level terms for provided vocabulary and level.
 
 + Parameters
     + vocabulary (string) - Vocabulary machine name
-    + level (number) - Leaf level to show (`2`,`3`,`all`)
+    + level - Leaf level to show (`2`,`3`,`all`)
 
 #### Retrieve Root Terms [GET]
 
