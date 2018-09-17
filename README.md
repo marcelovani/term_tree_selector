@@ -79,3 +79,20 @@ Returns the leaf level terms for provided vocabulary, parent root ID and level.
                 "url": "/ford/focus"
               }
             ]
+
+### JavaScript Events
+
+#### onTermTreeSelectorChange
+
+Fired when the root or leaf element changes.
+
+JSON data is passed as a property in the detail object.
+
+##### Example usage:
+
+```
+  document.addEventListener('onTermTreeSelectorChange', function (e) {
+     var data = e.detail.data;
+     var options = e.target.options;
+  }, false);
+```

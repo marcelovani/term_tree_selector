@@ -60,6 +60,7 @@
         for (var x = 0; x < data.length; x++) {
           root_select.appendChild(selectors.optionElement(data[x]));
         }
+        selectors.onChangeEvent(root_select, data);
       });
     },
 
@@ -117,6 +118,7 @@
 
       // Don't fetch new options if the tid is empty.
       if (tid === 0) {
+        selectors.onChangeEvent(leaf_select, []);
         return;
       }
 
@@ -127,6 +129,7 @@
         for (var x = 0; x < data.length; x++) {
           leaf_select.appendChild(selectors.optionElement(data[x]));
         }
+        selectors.onChangeEvent(leaf_select, data);
       });
     },
 
@@ -150,6 +153,19 @@
         }
       };
       xmlhttp.send(null);
+    },
+
+    /**
+     * Fire an onchange event for provided element.
+     *
+     * @param element
+     * @param data
+     */
+    onChangeEvent: function(element, data) {
+      element.dispatchEvent(new CustomEvent('onTermTreeSelectorChange', {
+        bubbles: true,
+        detail: {'data': data}
+      }));
     },
 
     /**
