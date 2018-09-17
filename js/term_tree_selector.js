@@ -75,7 +75,12 @@
       // Change leaf options when root item is changed.
       root_select.onchange = function(e) {
         leaf_select.disabled = true;
-        selectors.populateLeafOptions(leaf_select, vocabulary, e.target.value, level);
+        // Ensure an integer is always passed to populate leaf options.
+        var tid = parseInt(e.target.value);
+        if (e.target.selectedIndex === 0) {
+          tid = 0;
+        }
+        selectors.populateLeafOptions(leaf_select, vocabulary, tid, level);
       };
     },
 
@@ -104,9 +109,16 @@
      */
     populateLeafOptions: function(leaf_select, vocabulary, tid, level) {
       // Remove current child elements.
-      leaf_select.querySelectorAll('option[value]').forEach(function(el){
-        leaf_select.removeChild(el);
+      leaf_select.querySelectorAll('option').forEach(function(el, i){
+        if (i > 0) {
+          leaf_select.removeChild(el);
+        }
       });
+
+      // Don't fetch new options if the tid is empty.
+      if (tid === 0) {
+        return;
+      }
 
       var url = this.baseUrl +  encodeURIComponent(vocabulary)  + '/level/' + encodeURIComponent(level) + '/' + encodeURIComponent(tid);
       selectors.getJSON(url, function(data){
