@@ -145,6 +145,7 @@ class SelectorBlock extends BlockBase implements ContainerFactoryPluginInterface
     return [
       '#theme' => 'term_tree_selector',
       '#vocabulary' => $block_configuration['vocabulary'],
+      '#block_title' => $block_configuration['label'],
       '#root_label' => $block_configuration['root_label'],
       '#leaf_label' => $block_configuration['leaf_label'],
       '#leaf_level' => $block_configuration['leaf_level'],
