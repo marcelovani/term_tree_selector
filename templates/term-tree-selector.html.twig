@@ -20,10 +20,10 @@
 {% endif %}
 <form class="term-tree-selector" data-vocabulary="{{ vocabulary }}" data-level="{{ leaf_level }}" data-autosubmit="{{ autosubmit }}">
     <select name="root">
-        <option>Select {{ root_label }}</option>
+        <option>{{ root_label }}</option>
     </select>
     <select name="leaf">
-        <option>Select {{ leaf_label }}</option>
+        <option>{{ leaf_label }}</option>
     </select>
     <button name="submit">{{ submit_label }}</button>
 </form>
